@@ -46,3 +46,25 @@ result:
   12 A
   11 G
   41 T
+
+
+3.
+Errors:
+One error is that all `.bed` files need to be sorted according to their chromsome number and starting position. But `variante.bed` was not sorted. To fix this, use `awk '/^#/{next} {print $1,$2-1, $2}' $1 | sort -k1,1 -k2,2n > variants.bed`.
+Another error is that all the `.bed` files need to use `TAB` as delimiters. But `variants.bed` did not. To fix this, we can add `perl -p -i -e 's/ /\t/g' variants.bed`.
+
+code:
+`awk '/^#/{next} {print $1,$2-1, $2}' $1 | sort -k1,1 -k2,2n > variants.bed`
+`perl -p -i -e 's/ /\t/g' variants.bed`
+`sort -k1,1 -k2,2n ~/data/bed_files/genes.bed > genes.sorted.bed`
+`bedtools closest -a variants.bed -b genes.sorted.bed`
+
+Total variants:
+`bash exercise3.sh ~/data/vcf_files/random_snippet.vcf | wc -l`
+10293
+Total genes:
+`bash exercise3.sh ~/data/vcf_files/random_snippet.vcf | cut -f 7 | sort | uniq | wc -l`
+200
+Average:
+`echo '10293/200' | bc -l`
+51.465
