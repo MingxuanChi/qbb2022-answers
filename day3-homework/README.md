@@ -27,3 +27,5 @@ E3.
 `HG00100^IGBR^IEUR^Ifemale`  
 `$ awk -v OFS="\t" '{$1=$1;print}' plink_sorted.txt > plink_sorted_TAB.txt`  
 `$ join -1 2 -2 1 plink_sorted_TAB.txt integrated_call_samples_sorted.txt > joined.txt`  
+  
+Since numpy is based on C, it runs faster than python. Another strategy to solve this is to make full use of properties of numpy. We can use numpy array sort to sort the data array three times by each field we are focusing on, respectively. Then find the boundary of each sorted parts. And draw the plots by extarcting data with indexes of boundary lines. 
