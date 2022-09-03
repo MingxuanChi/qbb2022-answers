@@ -10,8 +10,8 @@ After running this script, you can get 'How many bps each feature covers':
 ```
   
 To compare two images, ImageMagick is a competent tool. After installed ImageMagick, we can use fuction `convert`:  
-`$ convert a.png a.rgba`
-`$ convert b.png b.rgba`
+`$ convert a.png a.rgba`  
+`$ convert b.png b.rgba`  
 Then use `$ cmp {a,b}.rgba`, if there is any difference, it will be displayed as:  
 `a.rgba b.rgba differ: byte n, line n`
   
@@ -69,4 +69,5 @@ DESCRIPTION
   
 Output  
      Preview of each histograms and the .png files will be saved to the current directory.
-	 ![Example](processed_pseudogene.chr21.bed.vcf.png)
+	 ![Example](processed_pseudogene.chr21.bed.vcf.png)  
+	 Example figure
