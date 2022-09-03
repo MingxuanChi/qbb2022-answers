@@ -42,32 +42,32 @@ This can happens in protein coding genes more frequently because the possibility
 E3.  
 SYNOPSIS  
      bxlab/cmdb-plot-vcfs/{do_all.sh subset_regions.sh plot_vcf_ac.py}  
-	 Parse .gtf file storing genes and .vcf file storing SNPs. Annote gene type to SNPs. And plot density of SNP allele counts in different gene types.
+	 Parse .gtf file storing genes and .vcf file storing SNPs. Annote gene type to SNPs. And plot density of SNP allele counts in different gene types.  
   
 USAGE  
      bash do_all.sh <.vcf file for snippets> <.gtf file for genes>  
   
 Dependencies  
-     Bash, Python3, bedtools in Bash, matplotlib.pyplot in Python
+     Bash, Python3, bedtools in Bash, matplotlib.pyplot in Python  
   
-DESCRIPTION
-     1. Create .bed files for features of interest
-         - Run subset_regions.sh Bash script
-         - Use grep to extract all chr-n (Here n is 21) infomations and write that into 'chrn.gtf'  
-		 - Go through every gene types that we are intereted in  
-		 - Use grep to extract all the information of a certain type of gene, and write that into 'genetype.chrn.bed'
-     2. Create .vcf files storing SNPs of each gene type
-	     - Go back to do_all.sh Bash script
-		 - Use bedtools sort to sort the genes in the .bed files generated above. Then use bedtools merge to exclude overlap segments.
-		 - Calculate the total length of each gene type and print as '+ Covering n bp'
-		 - Use bedtools intersect to extract all the SNPs in each genetype and write into file 'genetype.chrn.bed.vcf'
-	 3. Plot the density of AC for SNPs of each genetype
-	     - Run plot_vcf_ac.py Python script
-		 - Use the 'genetype.chrn.bed.vcf' file generated above as input
-		 - Use a for loop to go through each line, extractint the AC number, converting them into integer and writing them into a list 'ac'
-		 - Use matplotlib.pyplot to draw histograms for each genetype, preview them and save them as 'genetype.chrn.bed.vcf.png'
+DESCRIPTION  
+     1. Create .bed files for features of interest  
+         - Run subset_regions.sh Bash script  
+         - Use grep to extract all chr-n (Here n is 21) infomations and write that into 'chrn.gtf'   
+		 - Go through every gene types that we are intereted in   
+		 - Use grep to extract all the information of a certain type of gene, and write that into 'genetype.chrn.bed'  
+     2. Create .vcf files storing SNPs of each gene type  
+	     - Go back to do_all.sh Bash script  
+		 - Use bedtools sort to sort the genes in the .bed files generated above. Then use bedtools merge to exclude overlap segments.  
+		 - Calculate the total length of each gene type and print as '+ Covering n bp'  
+		 - Use bedtools intersect to extract all the SNPs in each genetype and write into file 'genetype.chrn.bed.vcf'  
+	 3. Plot the density of AC for SNPs of each genetype  
+	     - Run plot_vcf_ac.py Python script  
+		 - Use the 'genetype.chrn.bed.vcf' file generated above as input  
+		 - Use a for loop to go through each line, extractint the AC number, converting them into integer and writing them into a list 'ac'  
+		 - Use matplotlib.pyplot to draw histograms for each genetype, preview them and save them as 'genetype.chrn.bed.vcf.png'  
   
 Output  
-     Preview of each histograms and the .png files will be saved to the current directory.
+     Preview of each histograms and the .png files will be saved to the current directory.  
 	 ![Example](processed_pseudogene.chr21.bed.vcf.png)  
 	 Example figure
