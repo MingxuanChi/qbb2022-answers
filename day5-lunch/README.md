@@ -10,10 +10,10 @@ Bash code:
    
 E2.  
 ex2_a.png  
-![ex2_a.png]ex2_a.png  
+![ex2_a.png](ex2_a.png)  
   
 ex2_b.png  
-![ex2_b.png]ex2_b.png  
+![ex2_b.png](ex2_b.png)  
   
 3.  
 The relationship is significant. The size is 0.3776.  
@@ -23,7 +23,7 @@ The relationship is significant. The size is 1.3538.
   
 5.  
 ex2_c.png  
-![ex2_c.png]ex2_c.png  
+![ex2_c.png](ex2_c.png)  
   
 6.  
 It is significant.  
