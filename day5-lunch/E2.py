@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
 from scipy import stats
 
-filename = 'proband_fthr_mthr_age.txt'
-# filename = sys.argv[1]
+# filename = 'proband_fthr_mthr_age.txt'
+filename = sys.argv[1]
 
 proband_array = np.genfromtxt(filename, delimiter = ' ', dtype = None, encoding = None, 
 	                          names = ['Proband_id', 'NO_paternal_ori', 'NO_maternal_ori', 'Father_age', 'Mother_age'])
