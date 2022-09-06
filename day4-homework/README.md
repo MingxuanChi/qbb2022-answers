@@ -1,6 +1,6 @@
 E1.  
-    prob_arrange = numpy.arange(0.55, 1.05, 0.05)
-    print(prob_arrange)
+    prob_arrange = numpy.arange(0.55, 1.05, 0.05)  
+    print(prob_arrange)  
 [0.55 0.6  0.65 0.7  0.75 0.8  0.85 0.9  0.95 1.  ]  
 '0.55' if the starting number of the array. '1.05' is the ending number of the array. To be noticed, the generated array only contains the staring number and does not contain the ending number. '0.05' is the step length, which means the differences between each two neighboring numbers.  
   
