@@ -70,6 +70,7 @@ def run_experiment(probs, tosses, n_iters = 100, seed = 389, correct_the_pvalues
 
 tosses = numpy.array([10, 50, 100, 250, 500, 1000])
 probs = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
+# print(type(probs))
 
 power_array = run_experiment(probs, tosses)
 power_array_c = run_experiment(probs, tosses, correct_the_pvalues = True)
