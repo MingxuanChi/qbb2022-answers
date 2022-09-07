@@ -1,0 +1,3 @@
+# Feedback day3-Homework
+
+All of this looks really good. Your documentation of command line arguments and your explanations are excellent. Your plots are nicely formatted so all of the data are clearly visible. My only bit of feedback is in your function, you set several of the arguments to default values. However, the default values are the type conversion functions. It is good practice to only have default arguments if the argument is truly optional. Then, the default argument can have a meaningful value. Otherwise, you're doing great. Keep it up!
