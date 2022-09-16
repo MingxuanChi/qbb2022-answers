@@ -52,16 +52,6 @@ Output: `NODE_1_length_105830_cov_20.649193`
 So the longest one is `NODE_1_length_105830_cov_20.649193`.  
   
 2.4  
-`fn = 'OUTPUT.fasta'`  
-`output_list = list()`  
-`for i in open(fn):`  
-	`output_list.append(int(i.split('\t')[1]))`  
-`total_base = sum(output_list)`  
-`add_up = 0`  
-`while add_up < total_base*0.5:`  
-	`longest = max(output_list)`  
-	`add_up += longest`  
-	`output_list.remove(longest)`  
-`n50 = longest`  
-`print(n50)`  
+N50 = 47860  
+Script for this question is also uploaded. Thanks!  
 
