@@ -27,6 +27,7 @@ According to table, P < 0.01,
 so there is significant difference between simulation and Poisson distribution at coverage = 0.  
 And the overall histogram can align with the poisson curve well.  
   
+
 Q2.  
 `~/SPAdes-3.15.5-Darwin/bin/spades.py --pe1-1 frag180.1.fq --pe1-2 frag180.2.fq --mp1-1 jump2k.1.fq --mp1-2 jump2k.2.fq -o asm -t 4 -k 31`  
 2.1  
@@ -54,4 +55,58 @@ So the longest one is `NODE_1_length_105830_cov_20.649193`.
 2.4  
 N50 = 47860  
 Script for this question is also uploaded. Thanks!  
+  
+  
+Q3.  
+3.1  
+`dnadiff ref.fa asm/contigs.fasta`  
+`grep "AvgIdentity" out.report | less -S`  
+Output:  
+`AvgIdentity                   100.00               100.00`  
+`AvgIdentity                   100.00               100.00`  
+So the average identity is 100.00, for both many to many and 1 to 1 alignment (subset of many to many).  
+  
+3.2  
+`nucmer ref.fa asm/contigs.fasta`  
+`show-coords out.delta`  
+Output is a table, in which the longest length is 105830.  
+  
+3.3  
+`grep "Insertions" out.report | less -S`  
+Output:  
+`Insertions                         5                    1`  
+So there are 5 insertions and 1 deletions.  
+  
 
+Q4.  
+4.1  
+`show-coords out.delta`  
+Output is a table. Try to find the contig that occured two times, in whose line the S and E positions of ref sequence are continuous.  
+So we got the insertion happens between 26789 and 26790.  
+  
+4.2  
+27500 - 26787 - 1 = 712 bp  
+  
+4.3  
+The contig ID is `NODE_3_length_41351_cov_20.528098`.  
+`samtools faidx asm/contigs.fasta NODE_3_length_41351_cov_20.528098:26788-27499 > insertion.fasta`  
+`tail -n+2 insertion.fasta`  
+Output:  
+`CGCCCATGCGTAGGGGCTTCTTTAATTACTTGATTGACGCATGCCCCTCGTTCTACATGT`
+`CTAGCTTCGTAACTGCCCCGATTTATACAGGAGCATATGCGTTTCGTAGTGCCGGGAATG`
+`CATACCAAAGGGCTCACGGCGGGTACGCCACAATGGCTCAAGTCGAAAATGAATCGAAGA`
+`CAACAAGGAATACCGTACCCAATTACTCAAGGACCTCATACACCATCCCATGCTACTTAT`
+`CTACAGACATACACGCCAGCACCCAGCAACCAAAGCACACCGACGATAAGACTACAATCG`
+`CGATAAGCACAACTTACATTAGGAGGCCCGGCAAATCTTGACGGCGTTAAGTCCGACACG`
+`AATACCCCCCGACAAAAGCCTCGTATTCCGAGAGTACGAGAGTGCACAAAGCACCAAGGC`
+`GGGGCTTCGGTACATCCACCAGTAGTCCCGTCGTGGCGGATTTTCGTCGCGGATGATCCG`
+`AGGATTTCCTGCCTTGCCGAACACCTTACGTCATTCGGGGATGTCATAAAGCCAAACTTA`
+`GGCAAGTAGAAGATGGAGCACGGTCTAAAGGATTAAAGTCCTCGAATAACAAAGGACTGG`
+`AGTGCCTCAGGCATCTCTGCCGATCTGATTGCAAGAAAAAATGACAATATTAGTAAATTA`
+`GCCTATGAATAGCGGCTTTAAGTTAATGCCGAGGTCAATATTGACATCGGTA`
+This is the insertion sequence.  
+  
+4.4  
+`python dna-decode.py --decode --input insertion.fasta`  
+The message is:  
+`Congratulations to the 2021 CMDB @ JHU class!  Keep on looking for little green aliens...`
