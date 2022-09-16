@@ -4,7 +4,7 @@ Q1.
 1 Mbp * 15 / 100 bp= 150,000 reads  
   
 1.3  
-'print(1Mbp_coverage_list.count(0))'  
+`print(1Mbp_coverage_list.count(0))`  
 After multiple runnings:  
 results = 6676, 6418, 7098, 7571, 6350  
 Avg. = 6822.6  
@@ -16,7 +16,7 @@ so there is no significant difference between simulation and Poisson distributio
 And the overall histogram can align with the poisson curve well.  
   
 1.4  
-'print(1Mbp_coverage_list.count(0))'  
+`print(1Mbp_coverage_list.count(0))`  
 After multiple runnings:  
 results = 5, 3, 8, 10, 3  
 Avg. = 5.8  
@@ -52,16 +52,16 @@ Output: `NODE_1_length_105830_cov_20.649193`
 So the longest one is `NODE_1_length_105830_cov_20.649193`.  
   
 2.4  
-`fn = 'OUTPUT.fasta'
-output_list = list()
-for i in open(fn):
-	output_list.append(int(i.split('\t')[1]))
-total_base = sum(output_list)
-add_up = 0
-while add_up < total_base*0.5:
-	longest = max(output_list)
-	add_up += longest
-	output_list.remove(longest)
-n50 = longest
-print(n50)
-`  
+`fn = 'OUTPUT.fasta'  
+output_list = list()  
+for i in open(fn):  
+	output_list.append(int(i.split('\t')[1]))  
+total_base = sum(output_list)  
+add_up = 0  
+while add_up < total_base*0.5:  
+	longest = max(output_list)  
+	add_up += longest  
+	output_list.remove(longest)  
+n50 = longest  
+print(n50)`  
+
