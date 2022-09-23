@@ -131,7 +131,7 @@ while traceback_i > 0 or traceback_j > 0:
 		traceback_i -= 1
 
 seq1_align = seq1_back[::-1]
-# print(seq1_align)
+# print(len(seq1_align))
 seq1_gap_search = '$' + seq1_align + '$'
 seq1_gap_search_list = seq1_gap_search.split('-')
 while '' in seq1_gap_search_list:
@@ -140,6 +140,7 @@ while '' in seq1_gap_search_list:
 seq1_gap_number = len(seq1_gap_search_list) - 1
 
 seq2_align = seq2_back[::-1]
+# print(len(seq2_align))
 seq2_gap_search = '$' + seq2_align + '$'
 seq2_gap_search_list = seq2_gap_search.split('-')
 while '' in seq2_gap_search_list:
