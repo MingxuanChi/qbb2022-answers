@@ -71,11 +71,14 @@ seq2_id, seq2 = input_sequences[1]
 
 # ===============================================================================
 
-# Generating F_matrix.
+# Generating F_matrix and traceback matrix (in <'''> comments).
 
 # ===============================================================================
 
 F_matrix = np.zeros((len(seq1)+1, len(seq2)+1))
+'''
+Trcbk_matrix = np.zeros(len(seq1)+1, len(seq2)+1)
+'''
 for i in range(0, F_matrix.shape[0]):
 	F_matrix[i, 0] = i * gap_penalty
 for j in range(0, F_matrix.shape[1]):
@@ -94,18 +97,21 @@ for i in range(1, F_matrix.shape[0]):
 		# print(v)
 
 		F_matrix[i, j] = max(d, h, v)
-		# if F_matrix[i, j] == d:
-			# print('d')
-		# if F_matrix[i, j] == h:
-			# print('h')
-		# if F_matrix[i, j] == v:
-			# print('v')
+		
+'''
+		if F_matrix[i, j] == d:
+			Trcbk_matrix[i,j] = 'd'
+		elif F_matrix[i, j] == h:
+			Trcbk_matrix[i,j] = 'h'
+		elif F_matrix[i, j] == v:
+			Trcbk_matrix[i,j] = 'v'
+'''
 # print(F_matrix)
 
 
 # ===============================================================================
 
-# Traceback to get alignment sequence, gaps and alignment score.
+# Traceback to get alignment sequence, gaps and alignment score. Also can use traceback matrix, as in <'''> comments.
 
 # ===============================================================================
 
@@ -129,6 +135,23 @@ while traceback_i > 0 or traceback_j > 0:
 		seq1_back += seq1[traceback_i-1]
 		seq2_back += '-'
 		traceback_i -= 1
+
+'''
+while traceback_i > 0 or traceback_j > 0:
+	if Trcbk_matrix[traceback_i,traceback_j] == 'd':
+		seq1_back += seq1[traceback_i-1]
+		seq2_back += seq2[traceback_j-1]
+		traceback_i -= 1
+		traceback_j -= 1
+	elif Trcbk_matrix[traceback_i,traceback_j] == 'h':
+		seq1_back += '-'
+		seq2_back += seq2[traceback_j-1]
+		traceback_j -= 1
+	elif Trcbk_matrix[traceback_i,traceback_j] == 'v':
+		seq1_back += seq1[traceback_i-1]
+		seq2_back += '-'
+		traceback_i -= 1
+'''
 
 seq1_align = seq1_back[::-1]
 # print(len(seq1_align))
