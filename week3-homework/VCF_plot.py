@@ -7,22 +7,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from vcfParser import parse_vcf
 
-# def find_info(target = str, info_str = str):
-# 	target_index = info_str.find(target + '=') + len(target) + 1
-# 	# print(info_str[target_index])
-# 	target_score_raw = str()
-# 	while info_str[target_index] != ';':
-# 		target_score_raw += info_str[target_index]
-# 		target_index += 1
-# 	target_score_raw_list = target_score_raw.split(',')
-# 	target_score = float()
-# 	if target == 'AF':
-# 		for score in target_score_raw_list:
-# 			target_score += float(score)
-# 	elif target == 'DPB':
-# 		target_score = float(target_score_raw_list[0])
-# 	return float(target_score)
-
 def find_effect(eff_str):
 	effect_impact_list = list()
 	info_str_list = eff_str.split(',')
@@ -34,8 +18,8 @@ def find_effect(eff_str):
 				effect_impact_list.append(effect_impact)
 	return effect_impact_list
 
-# vcf_name = sys.argv[1]
-vcf_name = 'OUTPUT_filtered_decomposed_annotated.vcf'
+vcf_name = sys.argv[1]
+# vcf_name = 'OUTPUT_filtered_decomposed_annotated.vcf'
 
 vcf = parse_vcf(vcf_name)
 print(vcf[1])
@@ -67,39 +51,10 @@ for line_index in range(1, len(vcf)):
 		else:
 			eff_dict[effect] = 1
 
-
 # print(DP_list)
 # print(AF_list)
 # print(QUAL_list)
-print(eff_dict)
-
-
-
-# effect_dict = dict()
-# depth_list = list()
-# qual_list = list()
-# af_list = list()
-# for line in open(vcf_name):
-
-# 	if line.startswith('#'):
-# 		continue
-
-# 	line_list = line.strip('\n').split('\t')
-# 	print(line_list)
-# 	snp_name = line_list[0] + '_' + line_list[1]
-# 	snp_qual = float(line_list[5])
-# 	qual_list.append(snp_qual)
-# 	snp_depth = find_info('DPB', line_list[7])
-# 	depth_list.append(snp_depth)
-# 	snp_af = find_info('AF', line_list[7])
-# 	af_list.append(snp_af)
-
-# 	snp_effect_list = find_effect(line_list[7])
-# 	for effect in snp_effect_list:
-# 		if effect in effect_dict:
-# 			effect_dict[effect] += 1
-# 		else:
-# 			effect_dict[effect] = 1
+# print(eff_dict)
 
 fig = plt.figure(figsize=(20, 30))
 ax1 = plt.subplot(3,2,1)
