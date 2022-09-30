@@ -22,7 +22,7 @@ vcf_name = sys.argv[1]
 # vcf_name = 'OUTPUT_filtered_decomposed_annotated.vcf'
 
 vcf = parse_vcf(vcf_name)
-print(vcf[1])
+# print(vcf[1])
 
 DP_list = list()
 AF_list = list()
