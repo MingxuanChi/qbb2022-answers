@@ -56,7 +56,7 @@ echo "Step4 FREEBAYES finished!"
 # ------------------------------------------------------------------------------------------------------------------
 
 # Step_5
-vcffilter -f "AF > 0.99" OUTPUT.vcf > OUTPUT_filtered.vcf
+vcffilter -f "QUAL > 20" OUTPUT.vcf > OUTPUT_filtered.vcf
 echo "Step5 VCF_FILTER finished!"
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ echo "Step6 VCF_DECOMPOSING finished!"
 # ------------------------------------------------------------------------------------------------------------------
 
 # Step_7 (downgradation part is in README.md)
-snpeff ann R64-1-1.99 OUTPUT_filtered_decomposed.vcf > snpeff_output.vcf
+snpeff ann -formatEff R64-1-1.99 OUTPUT_filtered_decomposed.vcf > OUTPUT_filtered_decomposed_annotated.vcf
 echo "Step7 SNPEFF_ANNOTATION finished!"
 
 # ------------------------------------------------------------------------------------------------------------------
