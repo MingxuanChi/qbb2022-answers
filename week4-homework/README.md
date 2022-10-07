@@ -42,5 +42,5 @@ Q6.
 Example figure  
   
 Q7.  
-GS451 rs7257475 ZNF826  
-CB1908 rs10876043 DIP2B
+GS451 rs7257475 ZNF826: stated as a pseudogene  
+CB1908 rs10876043 DIP2B: Disco Interacting Protein 2 Homolog B. The encoded protein contains a binding site for the transcriptional regulator DNA methyltransferase 1 associated protein 1 as well as AMP-binding sites. The presence of these sites suggests that the encoded protein may participate in DNA methylation. 
