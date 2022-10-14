@@ -24,7 +24,23 @@ Percentage = 41/60 = 68.33%
 STEP5:  
 A bash script is wrote to do this step.  
 `bash Q1_STEP5.sh`  
+`python Q1_STEP5.py _scaled_cropped.bdg`  
 ![Example](Q1_STEP5.png)  
 Example figure  
 
 # Q2.  
+`conda activate meme`  
+`conda install -c conda-forge openmpi=4.1.4 -y`  
+`ln -s /Users/cmdb/data/genomes/mm10.fa ./`  
+`sort -k 5 -r -n intersect | head -300 > intersect_sorted_300`  
+`awk '{ printf "%s:%i-%i\n", $1, $2, $3 }' intersect_sorted_300 > intersect_sorted_300_formated`  
+`samtools faidx mm10.fa -r intersect_sorted_300_formated -o intersect_peak_sequences.fa`  
+`meme-chip -maxw 7 intersect_peak_sequences.fa -oc chip_output`  
+  
+# Q3.  
+`tar -xf motif_databases.12.23.tar`  
+`tomtom ./chip_output/combined.meme ./motif_databases/MOUSE/HOCOMOCOv11_full_MOUSE_mono_meme_format.meme -oc tomtom_output`  
+![Example](Q3.png)  
+Example figure  
+`grep "KLF4_" ./tomtom_output/tomtom.tsv | cat header.txt - > klf4_matches.txt`  
+`grep "SOX2_" ./tomtom_output/tomtom.tsv | cat header.txt - > sox2_matches.txt`
