@@ -36,3 +36,6 @@ Chr15: SNURF
 Chr20: NESP55  
 ![Example](chr20-nesp55.png)  
   
+Answer to the Q:  
+The answer should depends on how well phasing step worked. If the phasing algorithm merely uses overlapping variants to distinguish haplotype, the segments without such variants might be assigned to incorrect haplotype. Similarly, since here is no overlap between different chromosomes, it is possible that chromosomes from different source are assigned to one haplotype.  
+Thus, it is highly possible that regions in each H1 and H2 cannot correspond to the same side of parent. To make things better, sequencing information of parents that contains SNPs for comparison can be included in phasing step.
