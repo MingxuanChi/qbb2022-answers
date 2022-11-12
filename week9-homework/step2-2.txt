@@ -1,0 +1,4 @@
+No, I should not use normal distribution here.
+Because we hyoithesized that the gene expression patterns in different stages should be different.
+And as the animal getting matured, the expresstion pattern should get more and more complicated, so that the p values are expected to increase. 
+That is not what a normal distribution looks like.
