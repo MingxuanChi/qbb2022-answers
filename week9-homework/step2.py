@@ -139,8 +139,10 @@ for indx, i in enumerate(nega_lg_pval_w_sex_arr):
 		ax.scatter(beta_list_w_sex[indx], i, color = 'maroon')
 	else:
 		ax.scatter(beta_list_w_sex[indx], i, color = 'blue')
+ax.set_xlabel('beta coefficient')
+ax.set_ylabel('-log10(p-value)')
 plt.show()
-plt.savefig('volcano.png')
+fig.savefig('volcano.png')
 
 qqplot(np.array(pval_list), dist = scipy.stats.uniform, line = '45', fit = True)
 # plt.show()
