@@ -89,19 +89,19 @@ for i in range(log_arr.shape[0]):
 	pval_list.append(pval)
 	beta_list.append(beta)
 
-	mt_result = multipletests(np.array(pval_list), alpha=0.1, method='sidak', is_sorted=False, returnsorted=False)
-	if True in mt_result[0]:
-		de_list.append(row_names[i])
-
 	result_w_sex = ols(formula = 'fpkm ~ stage + sex', data = longdf).fit()
 	beta_w_sex = result_w_sex.params['stage']
 	pval_w_sex = result_w_sex.pvalues['stage']
 	pval_list_w_sex.append(pval_w_sex)
 	beta_list_w_sex.append(beta_w_sex)
 
-	mt_result_w_sex = multipletests(np.array(pval_list_w_sex), alpha=0.1, method='sidak', is_sorted=False, returnsorted=False)
-	if True in mt_result_w_sex[0]:
-		de_list_w_sex.append(row_names[i])
+mt_result = multipletests(np.array(pval_list), alpha=0.1, method='sidak', is_sorted=False, returnsorted=False)
+if True in mt_result[0]:
+	de_list.append(row_names[i])
+
+mt_result_w_sex = multipletests(np.array(pval_list_w_sex), alpha=0.1, method='sidak', is_sorted=False, returnsorted=False)
+if True in mt_result_w_sex[0]:
+	de_list_w_sex.append(row_names[i])
 
 f1 = open('DE-nosex.txt', 'w')
 for transcript in de_list:
